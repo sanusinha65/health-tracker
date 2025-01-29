@@ -1,0 +1,87 @@
+<section class="max-w-screen-3xl mx-auto p-8 bg-gray-200 min-h-screen">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
+    <!-- Total Records Card -->
+    <div
+      class="p-6 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+    >
+      <div class="flex items-center justify-between">
+        <!-- Left Side: Total Records Count & Label -->
+        <div>
+          <p class="text-4xl font-extrabold">{{ totalWorkOutRecords }}</p>
+          <p class="text-lg font-semibold opacity-90">Total Records</p>
+        </div>
+        <i class="fa-solid fa-database text-6xl opacity-90"></i>
+      </div>
+    </div>
+
+    <!-- Unique Workout Types Card -->
+    <div
+      class="p-6 bg-gradient-to-r from-green-700 to-green-900 text-white rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+    >
+      <div class="flex items-center justify-between">
+        <!-- Left Side: Unique Workout Types Count & Label -->
+        <div>
+          <p class="text-4xl font-extrabold">{{ totalWorkOutTypes }}</p>
+          <p class="text-lg font-semibold opacity-90">Unique Workout Types</p>
+        </div>
+        <i class="fa-solid fa-dumbbell text-6xl opacity-90"></i>
+      </div>
+    </div>
+
+    <!-- Total Users Card -->
+    <div
+      class="p-6 bg-gradient-to-r from-purple-800 to-purple-900 text-white rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+    >
+      <div class="flex items-center justify-between">
+        <!-- Left Side: Total Users Count & Label -->
+        <div>
+          <p class="text-4xl font-extrabold">{{ totalUsersMinutes }}</p>
+          <p class="text-lg font-semibold opacity-90">Total Users</p>
+        </div>
+        <i class="fa-regular fa-circle-user text-6xl opacity-90"></i>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 p-6 gap-8">
+    <div class="bg-white p-2 rounded-2xl shadow-xl">
+      <div class="w-full p-2 border-b border-gray-600">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-xl font-bold"><i class="fa-solid fa-table"></i> Workouts</h1>
+          </div>
+          <div>
+            <button pButton severity="warn" raised="true">+ Add Workout</button>
+          </div>
+        </div>
+      </div>
+
+      <p-table [value]="workOutRecords" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+          <tr>
+            <th>Name</th>
+            <th>Workouts</th>
+            <th>Number of Workouts</th>
+            <th>Total Workout Minutes</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-item>
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>
+              <ng-container
+                *ngFor="let workout of item.workouts; let i = index"
+              >
+                {{ workout.type
+                }}<ng-container *ngIf="i !== item.workouts.length - 1"
+                  >,
+                </ng-container>
+              </ng-container>
+            </td>
+            <td>{{ item.workouts.length }}</td>
+            <td>{{ getTotalWorkoutMinutes(item.id) }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</section>
