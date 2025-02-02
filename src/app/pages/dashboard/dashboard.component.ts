@@ -161,6 +161,8 @@ export class DashboardComponent implements OnInit {
     this.workOutMinute=0;
     this.workOutDialog = false;
     this.loadWorkOutRecords();
+    this.calculateTotalMinutes();
+    this.totalWorkOutRecords = this.workOutRecords.length;
   }
 
   isFormValid(): boolean {
