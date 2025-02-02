@@ -2,6 +2,18 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
 
+## Report
+
+
+File		Statements		Branches		Functions		Lines	
+app	
+100%	3/3	100%	0/0	100%	0/0	100%	2/2
+app/pages/dashboard	
+60%	36/60	22.22%	2/9	56.52%	13/23	58.62%	34/58
+app/services	
+85%	17/20	57.14%	4/7	100%	6/6	85%	17/20
+
+
 ## Development server
 
 To start a local development server, run:
